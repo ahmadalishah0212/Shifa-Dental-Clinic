@@ -1,0 +1,56 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+        <meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+        
+       <link rel="icon" type="image/jpeg" href="/tooth.jpg" />
+
+        <meta name="description" content="Shifa Dental Clinic - Dr. Ahmed Hassan Shah. Best dental clinic in Kallar Syedan for root canals, implants, and cosmetic dentistry. Pain-free and affordable." />
+		
+        <title>{title} - Best Dentist in Kallar Syedan</title>
+	</head>
+    
+	<body class="bg-slate-50">
+        <nav class="bg-white shadow-sm sticky top-0 z-50">
+            <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+                
+                <a href="/" class="flex flex-col">
+                    <span class="text-2xl font-bold text-teal-600">🦷 Shifa Dental Clinic</span>
+                    <span class="text-sm font-medium text-blue-500">Dr. Ahmed Hassan Shah</span>
+                </a>
+
+                <div class="space-x-6 hidden md:block">
+                    <a href="/" class="text-slate-600 hover:text-teal-600 font-medium">Home</a>
+                    <a href="/blog" class="text-slate-600 hover:text-teal-600 font-medium">Health Tips</a>
+                    <a href="tel:03270066999" class="bg-teal-600 text-white px-4 py-2 rounded-full hover:bg-teal-700 transition font-bold">
+    Call: 03270066999
+</a>
+                </div>
+            </div>
+        </nav>
+
+        <slot />
+
+        <footer class="bg-slate-800 text-white mt-20 py-10" id="contact">
+            <div class="max-w-4xl mx-auto text-center px-4">
+                <h3 class="text-2xl font-bold mb-4">Shifa Dental Clinic</h3>
+                <p class="mb-8 text-slate-400">Making Kallar Syedan smile, one patient at a time.</p>
+                <div class="flex justify-center space-x-8 mb-8">
+                    <span>📞  0327 0066999</span>
+                    <span>📍 C98G+H6H, Kallar Syedan, Pakistan</span>
+                </div>
+                <p class="text-slate-500 text-sm">© 2024 Shifa Dental Clinic. All rights reserved.</p>
+            </div>
+        </footer>
+	</body>
+</html>

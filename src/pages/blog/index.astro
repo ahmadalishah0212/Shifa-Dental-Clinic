@@ -1,0 +1,32 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+// This asks the robot to go get all your posts from "content/blog"
+const allPosts = await getCollection('blog');
+---
+
+<Layout title="Shifa Dental Clinic">
+	<main class="max-w-4xl mx-auto mt-10 px-4">
+        <h1 class="text-4xl font-bold text-slate-800 mb-8">Latest Health Tips</h1>
+        
+        <div class="grid gap-6">
+            {allPosts.map(post => (
+                <article class="border p-6 rounded-lg shadow-sm hover:shadow-md transition bg-white">
+                    <h2 class="text-2xl font-bold text-teal-600">
+                        <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+                    </h2>
+                    
+                  <p class="text-gray-500 text-sm mb-2">
+  {
+    /* Try to read pubDate first. If it's missing, try date. If both miss, show nothing. */
+    (post.data.pubDate || post.data.date || new Date()).toDateString()
+  }
+</p>
+                    
+                    <p class="text-slate-700">{post.data.description}</p>
+                </article>
+            ))}
+        </div>
+	</main>
+</Layout>
